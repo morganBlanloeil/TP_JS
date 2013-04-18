@@ -46,7 +46,6 @@
       .app-toolbar{padding: 10px 0px;margin-left: 0px !important;}
       .app .friend-item{margin-bottom:10px;}
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
   </head>
 
   <body>
@@ -96,16 +95,11 @@
     FbApp.init=function()
     {
         var myFriends = new FbApp.Friends();
-        myFriends.reset(getFriends());
         var myApp = new FbApp.AppView({
           collection:myFriends,
           el : $('.app')[0]
         });
-        $('.friend-list').append(
-          new FbApp.FriendView({model:myFriends.at(0)})
-          .render()
-          .$el
-        );
+        myFriends.reset(getFriends());
       };
       FbApp.init();
     </script>

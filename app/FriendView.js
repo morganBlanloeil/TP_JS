@@ -1,4 +1,5 @@
 FbApp.FriendView = Backbone.View.extend({
+	className:"friend-item span4",
 	tmpl:_.template($('#friendTmpl').html()),
 
 	initialize: function(){
