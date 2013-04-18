@@ -1,4 +1,4 @@
 Checkout : git clone https://github.com/morganBlanloeil/TP_JS.git
 Ajouter des fichiers : git add
-Commit : git commit (Ajouter un commentaire et faire :qw)
+Commit : git commit (Ajouter un commentaire et faire :wq)
 Mettre sur le serveur git push (login : morganBlanloeil)

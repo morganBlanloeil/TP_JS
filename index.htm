@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,6 +42,9 @@
         margin-bottom: 15px;
         padding: 7px 9px;
       }
+
+      .app-toolbar{padding: 10px 0px;margin-left: 0px !important;}
+      .app .friend-item{margin-bottom:10px;}
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
   </head>
@@ -50,12 +52,18 @@
   <body>
 
     <div class="container">
-
-      <div class="app offset1 span10">
-        <h2 class="app-heading">Fb Friends App</h2>
+      <div class="app row">
+        <div class="span12">
+          <h2 class="app-heading">Fb Friends App</h2>
+          <!-- btn-group, see: http://twitter.github.com/bootstrap/components.html#buttonGroups -->
+          <div class="span12 app-toolbar btn-group">
+            <button class="btn" id="byName">Sort by name</button>
+            <button class="btn" id="byBirthday">Sort by birthday</button>
+          </div>
+          <div class="friend-list row"></div>
+        </div>
       </div>
-
-    </div> <!-- /container -->
+    </div>
 
     <!-- Le javascript
     ================================================== -->
@@ -64,14 +72,34 @@
     <script src="js/jquery-1.9.0.js"></script>
     <script src="js/underscore-1.4.4.js" text = "text/javascript"></script>
     <script src="js/backbone-1.0.0.js" text = "text/javascript"></script>
+     <script id="friendTmpl" type="text/x-template" charset="utf-8">
+      <div class="media">
+        <a class="pull-left">
+          <img class="media-object" data-src="holder.js/64x64" alt="64x64" style="width: 64px; height: 64px;" src="<%= pic_big %>">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><a href="<%= profile_url %>"><%= sort_first_name %> <%= sort_last_name %></a></h4>
+          <%= relationship_status %>
+        </div>
+      </div>
+    </script>
     <script src="js/bootstrap.2.2.2.js"></script>
     <script type="text/javascript">
       var FbApp = {};
     </script>
-    <script src="app/friend.js"></script>
-    <script src="app/friends.js"></script>
-    <script src="app/friendView.js"></script>
-    <script src="app/friendsView.js"></script>
-    <script src="app/app.js"></script>
+    <script src="app/Friend.js"></script>
+    <script src="app/Friends.js"></script>
+    <script src="app/FriendView.js"></script>
+    <script src="app/FriendsView.js"></script>
+    <script src="app/AppView.js"></script>
+    <script type="text/javascript">
+    FbApp.init=function()
+    {
+        var myFriends = new FbApp.Friends();
+        myFriends.reset(getFriends());
+        var myApp = new FbApp.AppView(myFriends);
+      };
+      FbApp.init();
+    </script>
   </body>
 </html>
