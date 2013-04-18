@@ -97,7 +97,15 @@
     {
         var myFriends = new FbApp.Friends();
         myFriends.reset(getFriends());
-        var myApp = new FbApp.AppView(myFriends);
+        var myApp = new FbApp.AppView({
+          collection:myFriends,
+          el : $('.app')[0]
+        });
+        $('.friend-list').append(
+          new FbApp.FriendView({model:myFriends.at(0)})
+          .render()
+          .$el
+        );
       };
       FbApp.init();
     </script>

@@ -4,5 +4,9 @@ FbApp.FriendView = Backbone.View.extend({
 	initialize: function(){
 
 	},
-	render : function(){}
+	render : function(){
+		this.$el.html(this.tmpl(this.model.toJSON()));
+		return this;
+	}
 });
+
